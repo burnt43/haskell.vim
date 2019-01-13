@@ -11,15 +11,15 @@ function! haskell#OpenOrFocusBuffer(buffer_name)
 endfunction
 
 function! haskell#CompileAndRun()
+  let source_full_path = fnamemodify(bufname("%"), ":p")
+  let bin_full_path    = fnamemodify(bufname("%"), ":p:r")
+
   call haskell#OpenOrFocusBuffer('__Haskell_Output__')
 
   normal! ggdG
 
   setlocal filetype=haskelloutput
   setlocal buftype=nofile
-
-  let source_full_path = fnamemodify(bufname("%"), ":p")
-  let bin_full_path    = fnamemodify(bufname("%"), ":p:r")
 
   execute "read! ghc -dynamic " . source_full_path . " && " . bin_full_path
 endfunction
