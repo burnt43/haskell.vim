@@ -25,6 +25,6 @@ function! haskell#CompileAndRun()
 
   echom("compiling...")
 
-  silent execute! "read! ghc -dynamic " . source_full_path . " && " . bin_full_path
+  silent! execute "read! ghc -dynamic " . source_full_path . " && " . bin_full_path
   normal! ggdd
 endfunction
