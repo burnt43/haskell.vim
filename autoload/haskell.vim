@@ -13,6 +13,8 @@ endfunction
 function! haskell#CompileAndRun()
   write
 
+  echom("compiling...")
+
   let source_full_path = fnamemodify(bufname("%"), ":p")
   let bin_full_path    = fnamemodify(bufname("%"), ":p:r")
 
@@ -22,8 +24,6 @@ function! haskell#CompileAndRun()
 
   setlocal filetype=haskelloutput
   setlocal buftype=nofile
-
-  echo("compiling...")
 
   execute "silent read! ghc -dynamic " . source_full_path . " && " . bin_full_path
   normal! ggdd
