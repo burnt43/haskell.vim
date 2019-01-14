@@ -13,6 +13,8 @@ endfunction
 function! haskell#CompileAndRun()
   write
 
+  echom("compiling...")
+
   let source_full_path = fnamemodify(bufname("%"), ":p")
   let bin_full_path    = fnamemodify(bufname("%"), ":p:r")
 
