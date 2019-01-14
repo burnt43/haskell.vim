@@ -23,6 +23,8 @@ function! haskell#CompileAndRun()
   setlocal filetype=haskelloutput
   setlocal buftype=nofile
 
+  echom("compiling...")
+
   silent execute "read! ghc -dynamic " . source_full_path . " && " . bin_full_path
   normal! ggdd
 endfunction
