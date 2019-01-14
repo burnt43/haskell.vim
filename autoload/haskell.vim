@@ -1,4 +1,4 @@
-punction! haskell#OpenOrFocusBuffer(buffer_name)
+function! haskell#OpenOrFocusBuffer(buffer_name)
   let buffer_number = bufwinnr(a:buffer_name)
 
   if buffer_number >= 0
@@ -10,9 +10,8 @@ punction! haskell#OpenOrFocusBuffer(buffer_name)
   endif
 endfunction
 
-punction! haskell#CompileAndRun()
+function! haskell#CompileAndRun()
   write
-
 
   let source_full_path = fnamemodify(bufname("%"), ":p")
   let bin_full_path    = fnamemodify(bufname("%"), ":p:r")
