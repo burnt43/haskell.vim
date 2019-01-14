@@ -1,4 +1,4 @@
-function! haskell#OpenOrFocusBuffer(buffer_name)
+punction! haskell#OpenOrFocusBuffer(buffer_name)
   let buffer_number = bufwinnr(a:buffer_name)
 
   if buffer_number >= 0
@@ -10,10 +10,9 @@ function! haskell#OpenOrFocusBuffer(buffer_name)
   endif
 endfunction
 
-function! haskell#CompileAndRun()
+punction! haskell#CompileAndRun()
   write
 
-  echom("compiling...")
 
   let source_full_path = fnamemodify(bufname("%"), ":p")
   let bin_full_path    = fnamemodify(bufname("%"), ":p:r")
@@ -21,6 +20,8 @@ function! haskell#CompileAndRun()
   call haskell#OpenOrFocusBuffer('__Haskell_Output__')
 
   normal! ggdG
+
+  echom "compiling..."
 
   setlocal filetype=haskelloutput
   setlocal buftype=nofile
