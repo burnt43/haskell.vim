@@ -25,6 +25,8 @@ function! haskell#CompileAndRun()
   setlocal filetype=haskelloutput
   setlocal buftype=nofile
 
-  execute "silent read! ghc -dynamic " . source_full_path . " && " . bin_full_path
+  silent execute "read! ghc -dynamic " . source_full_path . " && " . bin_full_path
   normal! ggdd
+
+  call feedkeys("\<cr>")
 endfunction
