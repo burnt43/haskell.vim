@@ -13,9 +13,10 @@ endfunction
 function! haskell#CompileAndRun()
   write
 
+  let source_dir                         = fnamemodify(bufname("%"), ":p:h")
   let source_full_path                   = fnamemodify(bufname("%"), ":p")
   let bin_full_path                      = fnamemodify(bufname("%"), ":p:r")
-  let haskell_compile_and_execute_string = "ghc -dynamic " . source_full_path . " && " . bin_full_path
+  let haskell_compile_and_execute_string = "cd " . source_dir . " && ghc -dynamic " . source_full_path . " && " . bin_full_path
 
   call haskell#OpenOrFocusBuffer('__Haskell_Output__')
 
